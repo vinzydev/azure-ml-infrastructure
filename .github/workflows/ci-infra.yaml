@@ -18,6 +18,8 @@ jobs:
         uses: azure/CLI@v1
         with:
           azcliversion: latest
+          inlineScript: |
+                az --version
 
       - name: Login to Azure
         run: |
