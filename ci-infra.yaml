@@ -1,0 +1,31 @@
+name: CI Infrastructure
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Azure CLI
+        uses: azure/CLI@v1
+        with:
+          azcliversion: latest
+
+      - name: Login to Azure
+        run: |
+          #az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
+          echo "Login to Azure"
+
+      - name: Run Infrastructure Tests
+        run: |
+          # Insert commands here to run your test scripts in the 'tests' folder
+          echo "Running infrastructure tests..."
+
